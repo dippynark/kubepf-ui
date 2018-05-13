@@ -9588,16 +9588,22 @@ var _dippynark$elm$Main$castOption = function (cast) {
 			_1: {ctor: '[]'}
 		});
 };
+var _dippynark$elm$Main$displayCast = _elm_lang$core$Native_Platform.outgoingPort(
+	'displayCast',
+	function (v) {
+		return v;
+	});
 var _dippynark$elm$Main$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
 		if (_p0.ctor === 'DisplayCast') {
+			var _p1 = _p0._0;
 			return {
 				ctor: '_Tuple2',
 				_0: _elm_lang$core$Native_Utils.update(
 					model,
-					{cast: _p0._0}),
-				_1: _elm_lang$core$Platform_Cmd$none
+					{cast: _p1}),
+				_1: _dippynark$elm$Main$displayCast(_p1)
 			};
 		} else {
 			return {
@@ -9622,8 +9628,12 @@ var _dippynark$elm$Main$init = {
 		'',
 		{
 			ctor: '::',
-			_0: '!',
-			_1: {ctor: '[]'}
+			_0: '1',
+			_1: {
+				ctor: '::',
+				_0: '2',
+				_1: {ctor: '[]'}
+			}
 		}),
 	_1: _elm_lang$core$Platform_Cmd$none
 };

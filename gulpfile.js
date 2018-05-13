@@ -8,7 +8,7 @@ var connect = require('gulp-connect');
 var paths = {
   dest: 'dist',
   elm: 'src/*.elm',
-  static: 'src/*.{html,css,js}'
+  static: 'src/*.{html,css,js,cast}'
 };
 
 // Init Elm

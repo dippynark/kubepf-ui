@@ -27,7 +27,7 @@ type alias Model =
     
 init : (Model, Cmd Msg)
 init =
-    ( Model "" ["!"], Cmd.none )
+    ( Model "" ["1", "2"], Cmd.none )
 
 -- Messages	
 
@@ -41,7 +41,7 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         DisplayCast cast ->
-            ( { model | cast = cast }, Cmd.none )
+            ( { model | cast = cast }, displayCast cast )
         ListCasts casts ->
             ( { model | casts = String.split "\n" casts}, Cmd.none )
 
@@ -52,7 +52,7 @@ subscriptions model =
   WebSocket.listen "ws://192.168.1.27:5050/list" ListCasts
 
 -- View
-
+ 
 castOption cast =
     option [ value (toString cast) ] [ text (toString cast) ]
 
@@ -67,3 +67,7 @@ view model =
             p [ class "row" ] [ text model.cast ]
         ]
     ]
+
+-- Ports
+
+port displayCast : String -> Cmd msg

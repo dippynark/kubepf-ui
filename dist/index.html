@@ -6,16 +6,23 @@
         <script src="Main.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" type="text/css" href="asciinema-player.css" />
     </head>
     
     <body>
     </body>
 
-    <asciinema-player id="player" src=""></asciinema-player>
+    <div class="container">
+        <asciinema-player id="player" src="test"></asciinema-player>
+    </div>
 
     <script src="asciinema-player.js"></script>
     
     <script>
         var app = Elm.Main.fullscreen();
+
+        app.ports.displayCast.subscribe(function (word) {
+            document.getElementById("player").setAttribute("src", word);
+        })
     </script>
 </html>
